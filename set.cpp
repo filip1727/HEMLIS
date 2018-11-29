@@ -46,7 +46,7 @@ Set::Set(const Set& source)
 	//}
 	//while(newNode)
 	Node *p = source.head->next; //skip the dummy node
-	Node *newNode = new Node(source.head->value, p);
+	Node *head = new Node(source.head->value, p);
 	
 	while (p->next != nullptr)
 	{
@@ -61,15 +61,30 @@ Set::Set(const Set& source)
 // Destructor: deallocate all nodes
 Set::~Set() 
 {
+	//VERISION 1
+	//delte[] head;
+	
+	//VERISION 2
+	Node* p = head;
+	while (p)
+	{
+		delete head;
+		head = p;
+		p = p->next;
 
-	delete[] head;
+	}
+	delete head;
+	delete p;
 }
 
 // Test if set is empty
 bool Set::empty() const 
 {
-    // Add code
-    // implement before HA session week 46
+ 
+	if (head->next != nullptr)
+	{
+		return false;
+	}
 
     return true;  // to be deleted
 }
@@ -77,19 +92,28 @@ bool Set::empty() const
 // Return number of elements in the set
 int Set::cardinality() const 
 {
-    // Add code
-    // implement before HA session week 46
+	int count = 0;
+	Node *p = head;
 
-    return 0; // to be deleted
+	while (p->next)
+	{
+		count++;
+		p = p->next;
+	}
+
+    return count; // to be deleted
 }
 
 // Test if x is an element of the set
 bool Set::member(int x) const 
 {
-    // Add code
-    // implement before HA session week 46
+	Node *p = head;
 
-    return false; //to be deleted
+	while (p->next)
+	{
+		if (p->value == x) { return true;}
+	}
+	return false;
 }
 
 // Assignment operator

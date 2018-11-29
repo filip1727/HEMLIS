@@ -11,13 +11,13 @@ int main(int argc, char** argv)
 {
     doctest::Context context(argc, argv);
 
-    //context.setOption("success", true);    // Print all test cases even successful ones
+    context.setOption("success", true);    // Print all test cases even successful ones
 
-    //context.setOption("no-breaks", true);  // Don't break in the debugger when assertions fail
+    context.setOption("no-breaks", true);  // Don't break in the debugger when assertions fail
 
-    //context.setOption("no-path-filenames", true);  // Use short paths
+    context.setOption("no-path-filenames", true);  // Use short paths
 
-    //return context.run();
+    return context.run();
 }
 
 TEST_SUITE("Phase 1: Constructors") {
